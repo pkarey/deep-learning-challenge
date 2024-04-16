@@ -1,0 +1,26 @@
+Machine Learning Assignment Report
+
+Overview
+The purpose of this analysis is to predict the quality of loan applications based on several factors. The data available to us includes application type,
+affiliation, loan class, intention for use, organization type, income amount, ask amount, and success status. The success column will be used as y-values
+as it is binary and is the metric we are looking to predict.
+
+Results
+As stated in the purpose section of this report, the target values for our model is the IS_SUCCESSFUL column. The features used to make these predictions
+include APPLICATION_TYPE, AFFILIATION, CLASSIFICATION, USE_CASE, ORGANIZATION, STATUS, INCOME_AMT, SPECIAL_CONSIDERATIONS, and ASK_AMT. The unique identifier
+columns, EIN and NAME, were dropped as they cannot be used as features to predict outcomes.
+My first attempt at the model used 2 hidden layers with 80 and 20 nodes, respectively, with relu activation functions. Given the length of the dataset, I wanted 
+to have sufficient number of nodes for taking in the large volume of data points, and relu is the model I am most familiar with. My model did not reach target 
+performance on the first attempt, nor any thereafter despite several attempts at optimization. I attempted to remove 2 columns, SPECIAL_CONSIDERATIONS and 
+STATUS because the majority of loans fell into one of the two values in each column, and I did not feel that they were heavily influencing the loan outcome. 
+I also created bins for the different INCOME_AMT values in order to convert them to integers and avoid creating additional dummy columns. Finally, I added an 
+extra hidden layer and increased the number of nodes in each, which led to my closest accuracy score of around 73.4%.
+
+Summary
+Overall, the results did not meet the threshold that I had hoped to achieve in terms of accuracy. It would be interesting to assess the model with fewer classifications 
+in order to see if that feature could be used as a more effective indicator of the health of a loan. Additionally, having more accurate income data that would not need 
+manipulation to be used as integers I suspect would help enhance model performance. I did try to use an auto optimizer to find a more suitable model, but I did not notice 
+any that significantly affected the accuracy to a level I would have been happy with, and the long runtime forced me to stop the runtime before completion. I think it would 
+be very interesting to test the model again with a better performing machine which would allow me to really test a variety of different solutions. In any case, the optimization 
+process helped me to better understand the dataset in terms of determining which columns were better indicators of the target value, and this insight will help inform future 
+decisions in model creation.
